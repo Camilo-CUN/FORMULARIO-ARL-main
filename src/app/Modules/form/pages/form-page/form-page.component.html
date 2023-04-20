@@ -1,0 +1,179 @@
+<div class="container"><div class="row"><div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <img src="https://lh5.googleusercontent.com/PAV8vsHL4zbt-GLhNaLGYJHDkmjJJlcouxiuM4chSxrv96mcoDvLKCEpKbIhJQEFEg3nFyLc7ZAAMcBvA272BpZ1FlImPxrU0sZcHfkEQJQDJKzOPN486SHCK1o1fv8rhQ=w8274" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+            <form class="form-control" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label for="emailEstudiante" class="form-label">Correo Personal</label>
+                    <input type="email" name="EmailEstudiante" class="form-control" id="emailEstudiante" [(ngModel)]="formData.EmailEstudiante" required ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/">
+                </div>
+                <div class="mb-3">
+                    <label for="modalidadPractica" class="form-label">Modalidad en la cual va desarrollar su practica</label>
+                    <select name="ModalidadPractica" id="modalidadPractica" class="form-select" [(ngModel)]="formData.ModalidadPractica">
+                        <option>Seleccionar</option>
+                        <option>Pasantia</option>
+                        <option>Asesoria y asistencia técnica</option>
+                        <option>Práctica social</option>
+                        <option>Combinación de funciones</option>
+                        <option>Pasantía en Investigación</option>
+                        <option>Monitoria</option>
+                        <option>Cunbre emprendimiento naciente</option>
+                        <option>Cunbre emprendimiento consolidado</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="periodoAcademico" class="form-label">Periodo académico en el que inscribió la asignatura                </label>
+                    <select name="PeriodoAcademico" id="periodoAcademico" class="form-select" [(ngModel)]="formData.PeriodoAcademico">
+                        <option>Seleccionar</option>
+                        <option>2023A</option>
+                        <option>23V01</option>
+                        <option>22V03</option>
+                        <option>2022B</option>
+                        <option>22V04</option>
+                        <option>22V05</option>
+                        <option>22V06</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="documentoIdentidadFile" class="form-label">Fotocopia legible por los dos lados del documento de identidad</label>
+                    <input  accept=".pdf" class="form-control" name ="DocumentoIdentidadFile" type="file" id="documentoIdentidadFile" (change)="onFileChange($event)">
+                  </div>
+                <div class="mb-3">
+                    <label for="numeroIdentificacion" class="form-label">Número de identificación (Sin puntos ni comas)</label>
+                    <input type="text" name="NumeroIdentifiacion" class="form-control" id="numeroIdentificacion" [(ngModel)]="formData.NumeroIdentifiacion" ng-pattern="/^\d+$/">
+                </div>
+                <div class="mb-3">
+                    <label for="nombreEstudiante" class="form-label">Nombre del estudiante </label>
+                    <input type="text" class="form-control" name="NombreEstudiante" id="nombreEstudiante" [(ngModel)]="formData.NombreEstudiante">
+                </div>
+                <div class="mb-3">
+                    <label for="programaAcademico" class="form-label">Programa académico al que pertenece</label>
+                    <select id="programaAcademico" name="ProgramaAcademico" class="form-select" [(ngModel)]="formData.ProgramaAcademico">
+                        <option>Adminstración De Empresas</option>
+                        <option>Adminstración De Empresas Agroindustirales</option>
+                        <option>Adminstración De La Seguridad Social</option>
+                        <option>Adminstración Pública</option>
+                        <option>Adminstración Turística</option>
+                        <option>Comunicación Social</option>
+                        <option>Contaduriá Pública</option>
+                        <option>Dirección y Producción De Medios Audiovisuales</option>
+                        <option>Diseño De Moda y Patronaje</option>
+                        <option>Diseño Grafico</option>
+                        <option>Gestion Social Y Salud Comunitaria</option>
+                        <option>Ingeniería De Sistemas</option>
+                        <option>Ingeniería Electrónica</option>
+                        <option>Mercadeo & Publicidad</option>
+                        <option>Negocios Internacionales</option>
+                        <option>Ingeniería Industrial</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="tipoPractica" class="form-label">Nivel de práctica a realizar</label>
+                    <select id="tipoPractica" name="TipoPractica" class="form-select" [(ngModel)]="formData.TipoPractica">
+                        <option>Práctica 1 - nivel técnico</option>
+                        <option>Práctica 2 - nivel tecnológico</option>
+                        <option>Práctica 3 - nivel profesional</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="fechaNacimiento">Fecha de nacimiento del estudiante</label>
+                    <input id="fechaNacimiento" name="FechaNacimiento" type="date" class="form-control" [(ngModel)]="formData.FechaNacimiento">
+                </div>
+                <div class="mb-3">
+                    <label for="epsEstudiante" class="form-label">EPS del estudiante</label>
+                    <input type="text" name="EpsEstudiante" class="form-control" id="epsEstudiante" [(ngModel)]="formData.EpsEstudiante">
+                </div>
+                <div class="mb-3">
+                    <label for="documentoEPSFile" class="form-label">Cargar certificado de afiliación a EPS (Con fecha de expedición no mayor a 30 días, no se acepta carnet de EPS)</label>
+                    <input class="form-control" name="DocumentoEPSFile" type="file" id="documentoEPSFile" accept=".pdf" (change)="onFileChange($event)">
+                  </div>
+                <div class="mb-3">
+                    <label for="numeroTelEstudiante">Número telefónico del estudiante</label>
+                    <input type="number" name="NumeroTelEstudiante" id="numeroTelEstudiante" class="form-control" [(ngModel)]="formData.NumeroTelEstudiante">
+                </div>  
+                <div class="mb-3">
+                    <label for="correoInstitucional">Correo electrónico del estudiante institucional  (@cun.edu.co)
+                    </label>
+                    <input type="email" name="CorreoInstitucional" id="correoInstitucional" class="form-control" [(ngModel)]="formData.CorreoInstitucional">
+                </div>
+                <div class="mb-3">
+                    <label for="nombreEmpresaPracticas">Nombre de la empresa donde el estudiante va a desarrollar la práctica</label>
+                    <input type="text" name="NombreEmpresaPracticas" id="nombreEmpresaPracticas" class="form-control" [(ngModel)]="formData.NombreEmpresaPracticas">
+                </div>
+                <div class="mb-3">
+                    <label for="nitEmpresaPracticas">Nit de la empresa donde el estudiante va a desarrollar la práctica</label>
+                    <input type="number" name="NitEmpresaPracticas" id="nitEmpresaPracticas" class="form-control" [(ngModel)]="formData.NitEmpresaPracticas">
+                </div>
+                <div class="mb-3">
+                    <label for="riesgoEstudiante">Nivel de Riesgo que tendrá el estudiante durante su práctica</label>
+                    <select  id="riesgoEstudiante" name="RiesgoEstudiante" class="form-control" [(ngModel)]="formData.RiesgoEstudiante">
+                        <option>1 - 0.00522</option>
+                        <option>2 - 0.01044</option>
+                        <option>3 - 0.02436</option>
+                        <option>4 - 0.0435</option>
+                        <option>5 - 0.0696</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="nombrePersonaAcargoPractica">Nombre de la persona que estará a cargo de proceso de la práctica del estudiante en la empresa</label>
+                    <input type="text" name="NombrePersonaAcargoPractica" class="form-control" id="nombrePersonaAcargoPractica" [(ngModel)]="formData.NombrePersonaAcargoPractica">
+                </div>
+                <div class="mb-3">
+                    <label for="telefonoPersonasAcargoPractica">Teléfono de la persona que estará a cargo de proceso de la práctica del estudiante en la empresa</label>
+                    <input type="number" name="TelefonoPersonasAcargoPractica" class="form-control" id="telefonoPersonasAcargoPractica" [(ngModel)]="formData.TelefonoPersonasAcargo">
+                </div>
+                <div class="mb-3">
+                    <label for="emailPersonaAcargoPractica">Correo de la persona que estará a cargo de proceso de la práctica del estudiante en la empresa</label>
+                    <input type="email" name="EmailPersonaAcargoPractica" class="form-control" id="emailPersonaAcargoPractica" [(ngModel)]="formData.EmailPersonaAcargoPractica">
+                </div>
+                <div class="mb-3">
+                    <label for="fechaInicioPractica">Fecha de inicio de la práctica</label>                    
+                    <input type="date" name="FechaInicioPractica" class="form-control" id="fechaInicioPractica" [(ngModel)]="formData.FechaInicioPractica">
+                </div>
+                <div class="mb-3">
+                    <label for="fechaTerminacionPractica">Fecha de terminación de la práctica</label>
+                    <input type="date" name="FechaTerminacionPractica" class="form-control" id="fechaTerminacionPractica" [(ngModel)]="formData.FechaTerminacionPractica">
+                </div>
+                <div class="mb-3">
+                    <label for="actaInicioPractica">En este espacio podrá subir el Acta de Inicio (Solamente en formato PDF,  el documento debe tener la firma de la empresa y del estudiante)</label>
+                    <input type="file" class="form-control" id="actaInicioPractica" name="ActaInicioPractica" accept=".pdf" (change)="onFileChange($event)">
+                </div>
+                <div class="mb-3">
+                    <label for="regional">Regional a la que pertenece el estudiante</label>
+                    <select id="regional" name="Regional" class="form-control" [(ngModel)]="formData.Regional">
+                        <option>Regional Bogotá</option>
+                        <option>Regional Caquetá</option>
+                        <option>Regional Casanare</option>
+                        <option>Regional Córdoba</option>
+                        <option>Regional Costa Caribe</option>
+                        <option>Regional Cundinamarca</option>
+                        <option>Regional Huila</option>
+                        <option>Regional Magdalena</option>
+                        <option>Regional Meta</option>
+                        <option>Regional Nariño</option>
+                        <option>Regional Norte De Santander</option>
+                        <option>Regional Quindio</option>
+                        <option>Regional Risaralda</option>
+                        <option>Regional Sucre</option>
+                        <option>Regional Tolima</option>
+                        <option>Regional Valle Del Cauca</option>
+                        <option>Virtual</option>
+                    </select>
+                </div>
+
+                <strong>¡IMPORTANTE!</strong>
+                    <p>Luego de haber solicitado la afiliación, desde el área de prácticas se notificará al estudiante a su correo institucional @cun.edu.co que su solicitud  fue <strong>APROBADA</strong> o <strong>DEVUELTA.</strong></p>
+                    <p>Si la solicitud  fue <strong>APROBADA</strong>, pasados tres días hábiles desde el área de prácticas se enviara el certificado de afiliación de no recibir el certificado  el estudiante  debe poner un caso  a través de CAMI TICKET: <a href="https://desk.zoho.com/portal/servicioscun/es/home.">https://desk.zoho.com/portal/servicioscun/es/home.</a></p>
+                    <strong>El haber diligenciado este formulario no garantiza la afiliación a ARL</strong>
+                    <br><br>
+
+                <button (click)="submitForm()" type="submit" class="btn btn-success">Siguiente</button>
+
+            </form>
+    
+        </div>
+    </div>
+</div></div></div>

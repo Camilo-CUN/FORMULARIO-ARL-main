@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import * as nodemailer from 'nodemailer';
 import { FormsModule } from '@angular/forms';
 import { NgModel } from '@angular/forms';
+//Importa el servicio para enviar correos(no funciona por el momento)
+// import { CorreosAfiliacionesService } from 'src/app/correos-afiliaciones.service';
 
 
-
+// Templates Del Componente
 @Component({
   selector: 'app-form-page',
   templateUrl: './form-page.component.html',
@@ -15,8 +16,8 @@ import { NgModel } from '@angular/forms';
 
 
 export class FormPageComponent {
-    
   
+  //Declaracion de Variables Para asignar los input con ngModel
   formData  = {
     EmailEstudiante: '',
     ModalidadPractica: '',
@@ -43,39 +44,13 @@ export class FormPageComponent {
     Regional:'',
     
   }
-  // sendEmail(){
-  //   const transporter = nodemailer.createTransport({
-  //     host:'smtp.gmail.com',
-  //     port: 587,
-  //     secure: false,
-  //     auth:{
-  //       user:'noreply@cun.edu.co',
-  //       pass:'Alfa$123'
-  //     } 
-  //   });
-  //   const mailOptions = {
-  //     from:'Camilotriana231@gmail.com',
-  //     to: this.formData.EmailEstudiante,
-  //     subject: 'proyecto1',
-  //     text: 'Prueba 1 '
-  //   };
 
-  //   transporter.sendMail(mailOptions,(error,info)=>{
-  //     if(error){
-  //       console.error(error);
-  //     }else{
-  //       console.log('Correo melo')
-  //     }
-  //   }
-  //   );
-  // }
   
-  
-
   constructor(private http: HttpClient){}
+    //constructor de el servicio ,private correosAfiliacionesService:CorreosAfiliacionesService){}
 
+    //Funcion que se ejecuta para convertir los input en formato json al hacer click en enviar
   submitForm() {
-    
     const form = new FormData();
 
     form.append('EmailEstudiante', this.formData.EmailEstudiante);
@@ -106,6 +81,7 @@ export class FormPageComponent {
     console.log(formDataJson);
 
 
+      //metodo post para enviar los datos 
     // this.http.post('http://127.0.0.1:8000/api/register', form)
     //   .subscribe(
     //     (response) =>console.log(response),
@@ -119,11 +95,16 @@ export class FormPageComponent {
       link.target = 'Formulario.json';
       link.click();
 
-    // this.sendEmail();
+//Llama el servicio De correos al 
+  // this.correosAfiliacionesService.enviarCorreo(this.formData.EmailEstudiante,this.formData.ModalidadPractica,this.formData.NombreEmpresaPracticas);
+      
+      
+      
     
 }
 
 
+//Funcion para Convertir los input para 
 onFileChange(event: any) {
   const file = event.target.files[0];
   if (!file) {
@@ -168,5 +149,7 @@ onFileChange(event: any) {
 
 
 }
+
+
 
 }  

@@ -4,11 +4,11 @@
             <img src="https://lh5.googleusercontent.com/PAV8vsHL4zbt-GLhNaLGYJHDkmjJJlcouxiuM4chSxrv96mcoDvLKCEpKbIhJQEFEg3nFyLc7ZAAMcBvA272BpZ1FlImPxrU0sZcHfkEQJQDJKzOPN486SHCK1o1fv8rhQ=w8274" class="card-img-top" alt="...">
         </div>
         <div class="card-body">
-            <form class="form-control" enctype="multipart/form-data" >
+            <form  class="form-control" enctype="multipart/form-data" >
 
                 <div class="mb-3">
                     <label for="emailEstudiante" class="form-label">Correo Personal</label>
-                    <input type="email" name="EmailEstudiante" class="form-control" id="emailEstudiante" [(ngModel)]="formData.EmailEstudiante" required ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/">
+                    <input type="email" name="EmailEstudiante" class="form-control" id="emailEstudiante" required [(ngModel)]="formData.EmailEstudiante">
                 </div>
                 <div class="mb-3">
                     <label for="modalidadPractica" class="form-label">Modalidad en la cual va desarrollar su practica</label>

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,} from '@angular/forms';
 import { NgModel } from '@angular/forms';
+import { Validators } from '@angular/forms';
 //Importa el servicio para enviar correos(no funciona por el momento)
 // import { CorreosAfiliacionesService } from 'src/app/correos-afiliaciones.service';
 
@@ -19,7 +20,7 @@ export class FormPageComponent {
   
   //Declaracion de Variables Para asignar los input con ngModel
   formData  = {
-    EmailEstudiante: '',
+    EmailEstudiante:'',
     ModalidadPractica: '',
     PeriodoAcademico:'',
     DocumentoIdentidadFile: '',
@@ -51,9 +52,24 @@ export class FormPageComponent {
 
     //Funcion que se ejecuta para convertir los input en formato json al hacer click en enviar
   submitForm() {
-    const form = new FormData();
+    
+    if(this.formData.EmailEstudiante == "" || this.formData.ModalidadPractica == "" || this.formData.PeriodoAcademico == "" || this.formData.DocumentoIdentidadFile == ""
+    ||this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.ProgramaAcademico == "" || this.formData.TipoPractica == "" 
+    ||this.formData.FechaNacimiento == ""){
+      alert("Porfavor Llena Completamente El Formulario")
+    }else return this.Enviar()
+    
 
-    form.append('EmailEstudiante', this.formData.EmailEstudiante);
+    
+      
+      
+    
+}
+
+Enviar(){
+  const form = new FormData();
+
+    form.append('EmailEstudiante',  this.formData.EmailEstudiante);
     form.append('ModalidadPractica', this.formData.ModalidadPractica);
     form.append('PeriodoAcademico', this.formData.PeriodoAcademico);
     form.append("DocumentoIdentidadFile", this.formData.DocumentoIdentidadFile);
@@ -98,11 +114,7 @@ export class FormPageComponent {
 //Llama el servicio De correos al 
   // this.correosAfiliacionesService.enviarCorreo(this.formData.EmailEstudiante,this.formData.ModalidadPractica,this.formData.NombreEmpresaPracticas);
       
-      
-      
-    
 }
-
 
 //Funcion para Convertir los input para 
 onFileChange(event: any) {

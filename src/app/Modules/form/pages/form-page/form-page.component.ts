@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormsModule,} from '@angular/forms';
 import { NgModel } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { HttpHeaders } from '@angular/common/http';
+import Swal from 'sweetalert2';
+
 //Importa el servicio para enviar correos(no funciona por el momento)
 // import { CorreosAfiliacionesService } from 'src/app/correos-afiliaciones.service';
 
@@ -16,8 +19,8 @@ import { Validators } from '@angular/forms';
 
 
 
-export class FormPageComponent {
-  
+export class FormPageComponent implements OnInit {
+  isLoading = true;
   //Declaracion de Variables Para asignar los input con ngModel
   formData  = {
     EmailEstudiante:'',
@@ -43,32 +46,43 @@ export class FormPageComponent {
     FechaTerminacionPractica:'',
     ActaInicioPractica:'',
     Regional:'',
-    
+
   }
 
-  
+
   constructor(private http: HttpClient){}
     //constructor de el servicio ,private correosAfiliacionesService:CorreosAfiliacionesService){}
 
     //Funcion que se ejecuta para convertir los input en formato json al hacer click en enviar
   submitForm() {
-    
-    if(this.formData.EmailEstudiante == "" || this.formData.ModalidadPractica == "" || this.formData.PeriodoAcademico == "" || this.formData.DocumentoIdentidadFile == ""
-    ||this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.ProgramaAcademico == "" || this.formData.TipoPractica == "" 
-    ||this.formData.FechaNacimiento == ""){
-      alert("Porfavor Llena Completamente El Formulario")
-    }else return this.Enviar()
-    
 
-    
-      
-      
-    
+    if(!this.formData.EmailEstudiante.includes("@")||!this.formData.EmailPersonaAcargoPractica.includes("@")){
+      Swal.fire({
+        title: '¡Error!',
+        text: 'Debes ingresar un email valido',
+        icon: 'warning'
+      });
+    }
+    if(this.formData.EmailEstudiante == "" || this.formData.ModalidadPractica == "" || this.formData.PeriodoAcademico == "" || this.formData.DocumentoIdentidadFile == ""
+    ||this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.ProgramaAcademico == "" || this.formData.TipoPractica == ""
+    ||this.formData.FechaNacimiento == ""){
+      Swal.fire({
+        title: '¡Error!',
+        text: 'Todos los campos son obligatorios',
+        icon: 'warning'
+      });
+    }else return this.Enviar()
+
+
+
+
+
+
 }
 
 Enviar(){
-  const form = new FormData();
-
+    this.isLoading = true;
+    const form = new FormData();
     form.append('EmailEstudiante',  this.formData.EmailEstudiante);
     form.append('ModalidadPractica', this.formData.ModalidadPractica);
     form.append('PeriodoAcademico', this.formData.PeriodoAcademico);
@@ -92,31 +106,61 @@ Enviar(){
     form.append('FechaTerminacionPractica', this.formData.FechaTerminacionPractica);
     form.append('ActaInicioPractica', this.formData.ActaInicioPractica);
     form.append('Regional', this.formData.Regional);
-
     const formDataJson = JSON.stringify(this.formData);
-    console.log(formDataJson);
+    //console.log(formDataJson);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+      //metodo post para enviar los datos
+    this.http.post('https://apiarl.cunapp.pro/api/GoogleArl',formDataJson,httpOptions)
+      .subscribe(
+        (response) => {
+          const JsonResponse = JSON.stringify(response);
+          const responseObject = JSON.parse(JsonResponse);
+          if(responseObject.status){
+            this.isLoading=false;
+            Swal.fire({
+              title: '¡Éxito!',
+              text: responseObject.message,
+              icon: 'success'
+            });
+
+          }else{
+            this.isLoading=false;
+            Swal.fire({
+              title: '¡Error!',
+              text: responseObject.message,
+              icon: 'warning'
+            });
+          }
+          console.log(responseObject);
+        },
+        (error) => {
+          this.isLoading=false;
+          Swal.fire({
+            title: '¡Error!',
+            text: 'No se pudo conectar a la base de datos',
+            icon: 'error'
+          });
+        }
+      );
 
 
-      //metodo post para enviar los datos 
-    // this.http.post('http://127.0.0.1:8000/api/register', form)
-    //   .subscribe(
-    //     (response) =>console.log(response),
+      // const blob = new Blob([formDataJson] , {type: 'application/json'});
+      // const url = window.URL.createObjectURL(blob);
+      // const link = document.createElement('a');
+      // link.href = url;
+      // link.target = 'Formulario.json';
+      // link.click();
 
-    //   )
-
-      const blob = new Blob([formDataJson] , {type: 'application/json'});
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.target = 'Formulario.json';
-      link.click();
-
-//Llama el servicio De correos al 
+//Llama el servicio De correos al
   // this.correosAfiliacionesService.enviarCorreo(this.formData.EmailEstudiante,this.formData.ModalidadPractica,this.formData.NombreEmpresaPracticas);
-      
+
 }
 
-//Funcion para Convertir los input para 
+//Funcion para Convertir los input para
 onFileChange(event: any) {
   const file = event.target.files[0];
   if (!file) {
@@ -127,8 +171,8 @@ onFileChange(event: any) {
     reader.readAsDataURL(file);
     reader.onload = () => {
       if (reader.result) {
-        const base64 = reader.result.toString().split(',')[1]; 
-        this.formData.DocumentoIdentidadFile = base64; 
+        const base64 = reader.result.toString().split(',')[1];
+        this.formData.DocumentoIdentidadFile = base64;
       } else {
         console.error("Error al leer el archivo");
       }
@@ -155,13 +199,12 @@ onFileChange(event: any) {
         console.error("Error De archivo")
       }
     };
+  }
 }
 
-  
-
-
+ngOnInit(): void {
+  // Ocultar el div de loading después de que el DOM haya cargado
+  this.isLoading = false;
 }
 
-
-
-}  
+}

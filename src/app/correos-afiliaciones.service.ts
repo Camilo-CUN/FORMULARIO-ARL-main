@@ -14,7 +14,7 @@
 //       secure: true,
 //       auth:{
 //         user:'noreply@cun.edu.co',
-//         pass:'Alfa$123'
+//         pass:''
 //       }
 //     });
 //   }

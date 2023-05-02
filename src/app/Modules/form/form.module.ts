@@ -6,10 +6,12 @@ import { FormRoutingModule } from './form-routing.module';
 import { FormPageComponent } from './pages/form-page/form-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { LoadingComponent } from './pages/loading/loading.component';
 
 @NgModule({
   declarations: [
-    FormPageComponent
+    FormPageComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,

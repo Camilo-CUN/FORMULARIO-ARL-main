@@ -1,11 +1,11 @@
+<app-loading *ngIf="isLoading"></app-loading>
 <div class="container"><div class="row"><div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <img src="https://lh5.googleusercontent.com/PAV8vsHL4zbt-GLhNaLGYJHDkmjJJlcouxiuM4chSxrv96mcoDvLKCEpKbIhJQEFEg3nFyLc7ZAAMcBvA272BpZ1FlImPxrU0sZcHfkEQJQDJKzOPN486SHCK1o1fv8rhQ=w8274" class="card-img-top" alt="...">
         </div>
+        <img src="./assets/Portada.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <form  class="form-control" enctype="multipart/form-data" >
-
                 <div class="mb-3">
                     <label for="emailEstudiante" class="form-label">Correo Personal</label>
                     <input type="email" name="EmailEstudiante" class="form-control" id="emailEstudiante" required [(ngModel)]="formData.EmailEstudiante">
@@ -163,17 +163,13 @@
                         <option>Virtual</option>
                     </select>
                 </div>
-
                 <strong>¡IMPORTANTE!</strong>
                     <p>Luego de haber solicitado la afiliación, desde el área de prácticas se notificará al estudiante a su correo institucional @cun.edu.co que su solicitud  fue <strong>APROBADA</strong> o <strong>DEVUELTA.</strong></p>
                     <p>Si la solicitud  fue <strong>APROBADA</strong>, pasados tres días hábiles desde el área de prácticas se enviara el certificado de afiliación de no recibir el certificado  el estudiante  debe poner un caso  a través de CAMI TICKET: <a href="https://desk.zoho.com/portal/servicioscun/es/home.">https://desk.zoho.com/portal/servicioscun/es/home.</a></p>
                     <strong>El haber diligenciado este formulario no garantiza la afiliación a ARL</strong>
                     <br><br>
-
                 <button (click)="submitForm()" type="submit" class="btn btn-success">Siguiente</button>
-
             </form>
-    
         </div>
     </div>
 </div></div></div>

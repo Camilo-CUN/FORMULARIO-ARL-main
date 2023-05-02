@@ -309,6 +309,15 @@
                         <option>Virtual</option>
                     </select>
                 </div>
+                
+                <div class="mb-3">
+                    <label for="municipio">Municipio</label>
+                    <input  class="form-control" id="municipio" type="text" [(ngModel)]="formData.busqueda" (input)="buscar()" [ngModelOptions]="{standalone: true}" />
+                    <select class="form-control" [(ngModel)]="formData.seleccion" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let item of coincidencias" [value]="item">{{item}}</option>
+                    </select>
+                </div>
+
                 <strong>¡IMPORTANTE!</strong>
                     <p>Luego de haber solicitado la afiliación, desde el área de prácticas se notificará al estudiante a su correo institucional @cun.edu.co que su solicitud  fue <strong>APROBADA</strong> o <strong>DEVUELTA.</strong></p>
                     <p>Si la solicitud  fue <strong>APROBADA</strong>, pasados tres días hábiles desde el área de prácticas se enviara el certificado de afiliación de no recibir el certificado  el estudiante  debe poner un caso  a través de CAMI TICKET: <a href="https://desk.zoho.com/portal/servicioscun/es/home.">https://desk.zoho.com/portal/servicioscun/es/home.</a></p>

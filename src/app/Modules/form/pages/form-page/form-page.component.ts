@@ -5,6 +5,7 @@ import { NgModel } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import * as XLSX from 'xlsx';
 
 //Importa el servicio para enviar correos(no funciona por el momento)
 // import { CorreosAfiliacionesService } from 'src/app/correos-afiliaciones.service';
@@ -20,6 +21,9 @@ import Swal from 'sweetalert2';
 
 
 export class FormPageComponent implements OnInit {
+
+
+
   isLoading = true;
   //Declaracion de Variables Para asignar los input con ngModel
   formData  = {
@@ -50,13 +54,37 @@ export class FormPageComponent implements OnInit {
     FechaTerminacionPractica:'',
     ActaInicioPractica:'',
     Regional:'',
-
+    busqueda:'',
+    seleccion:''
   }
-
+  coincidencias: string[] = [];
+  
+  public dataa: any[] = [];
+  
+  buscar(): void {
+    const busqueda = this.formData.busqueda; // Busqueda tal cual como se ingresó
+    console.log('Busqueda:', busqueda);
+    const opciones = this.dataa.slice(1); // Omitir la primera fila que contiene los encabezados
+    const mejoresCoincidencias = opciones.filter(opcion =>
+      opcion[0] && opcion[0].includes(busqueda)
+    ).map(opcion => opcion[0]);
+  
+    this.coincidencias = mejoresCoincidencias;
+    this.formData.seleccion = mejoresCoincidencias[1]; 
+    console.log(this.coincidencias);
+}
+public CargarData(): void {
+  this.http.get('/assets/PLANTILLA ARL.xlsx', { responseType: 'arraybuffer' }).subscribe((data) => {
+    const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    this.dataa = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+  });
+}
 
   constructor(private http: HttpClient){}
     //constructor de el servicio ,private correosAfiliacionesService:CorreosAfiliacionesService){}
-
+  
     //Funcion que se ejecuta para convertir los input en formato json al hacer click en enviar
   submitForm() {
 
@@ -99,6 +127,7 @@ export class FormPageComponent implements OnInit {
 
 
 }
+
 
 Enviar(){
     this.isLoading = true;
@@ -252,6 +281,8 @@ onFileChange(event: any) {
 ngOnInit(): void {
   // Ocultar el div de loading después de que el DOM haya cargado
   this.isLoading = false;
+  this.CargarData();
+ 
 }
 
 }

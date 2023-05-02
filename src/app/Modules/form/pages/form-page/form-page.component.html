@@ -20,15 +20,51 @@
                         <option>Combinación de funciones</option>
                         <option>Pasantía en Investigación</option>
                         <option>Monitoria</option>
-                        <option>Cunbre emprendimiento naciente</option>
-                        <option>Cunbre emprendimiento consolidado</option>
-                    </select>
+                        <option value="Cunbre emprendimiento naciente">Cunbre emprendimiento naciente</option>
+                        <option value="Cunbre emprendimiento consolidado">Cunbre emprendimiento consolidado</option>
+                        </select><br>
+
+                            <div *ngIf="formData.ModalidadPractica === 'Cunbre emprendimiento naciente'">
+                                <div class="mb-3">
+                                    <label for="rutFile" class="form-label">Soporte de RUT de su empresa o emprendimiento</label>
+                                    <input  accept=".pdf" class="form-control" name ="RutFile" type="file" id="rutFile" (change)="onFileChange($event)">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nombreEmprendimiento" class="form-label">Nombre de su Emprendimiento</label>
+                                    <input type="text" name="NombreEmprendimiento" class="form-control" id="nombreEmprendimiento" required [(ngModel)]="formData.NombreEmprendimiento">
+                                </div>  
+                                <div class="mb-3">
+                                    <label for="nitEmprendimiento" class="form-label">NIT de su Emprendimiento</label>
+                                    <input type="number" name="NitEmprendimiento" class="form-control" id="NitEmprendimiento" required [(ngModel)]="formData.NitEmprendimiento">
+                                </div>  
+                            </div>
+                            <div *ngIf="formData.ModalidadPractica === 'Cunbre emprendimiento consolidado'">
+                                <div class="mb-3">
+                                    <label for="rutFile" class="form-label">Soporte de RUT de su empresa o emprendimiento</label>
+                                    <input  accept=".pdf" class="form-control" name ="RutFile" type="file" id="rutFile" (change)="onFileChange($event)">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="camaraComercioFile" class="form-label">Soporte cámara de comercio (Vigente-Emprendimiento consolidado)</label>
+                                    <input  accept=".pdf" class="form-control" name ="CamaraComercioFile" type="file" id="CamaraComercioFile" (change)="onFileChange($event)">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nombreEmprendimiento" class="form-label">Nombre de su Emprendimiento</label>
+                                    <input type="text" name="NombreEmprendimiento" class="form-control" id="nombreEmprendimiento" required [(ngModel)]="formData.NombreEmprendimiento">
+                                </div>  
+                                <div class="mb-3">
+                                    <label for="nitEmprendimiento" class="form-label">NIT de su Emprendimiento</label>
+                                    <input type="number" name="NitEmprendimiento" class="form-control" id="NitEmprendimiento" required [(ngModel)]="formData.NitEmprendimiento">
+                                </div> 
+
+                            </div>
+
                 </div>
                 <div class="mb-3">
                     <label for="periodoAcademico" class="form-label">Periodo académico en el que inscribió la asignatura                </label>
                     <select name="PeriodoAcademico" id="periodoAcademico" class="form-select" [(ngModel)]="formData.PeriodoAcademico">
                         <option>Seleccionar</option>
                         <option>2023A</option>
+                        <option>232</option>
                         <option>23V01</option>
                         <option>22V03</option>
                         <option>2022B</option>
@@ -38,7 +74,7 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="documentoIdentidadFile" class="form-label">Fotocopia legible por los dos lados del documento de identidad</label>
+                  <label for="documentoIdentidadFile" class="form-label">Fotocopia legible por los dos lados del documento de identidad</label>
                     <input  accept=".pdf" class="form-control" name ="DocumentoIdentidadFile" type="file" id="documentoIdentidadFile" (change)="onFileChange($event)">
                   </div>
                 <div class="mb-3">
@@ -84,7 +120,117 @@
                 </div>
                 <div class="mb-3">
                     <label for="epsEstudiante" class="form-label">EPS del estudiante</label>
-                    <input type="text" name="EpsEstudiante" class="form-control" id="epsEstudiante" [(ngModel)]="formData.EpsEstudiante">
+                    <select name="EpsEstudiante" class="form-control" id="epsEstudiante" [(ngModel)]="formData.EpsEstudiante">
+                        <option>ALIANSALUD E.P.S</option>
+                        <option>SALUD TOTAL E.P.S</option>
+                        <option>CAFESALUD E.P.S.</option>
+                        <option>BONSALUD E.P.S</option>
+                        <option>E.P.S SANITAS</option>
+                        <option>I.S.S</option>
+                        <option>UNIMEC E.P.S</option>
+                        <option>COMPENSAR E.P.S</option>
+                        <option>E.P.S COMFENALCO ANTIOQUIA</option>
+                        <option>E.P.S SURA</option>
+                        <option>COLSEGUROS E.P.S</option>
+                        <option>COMFENALCO VALLE E.P.S</option>
+                        <option>SALUDCOOP E.P.S</option>
+                        <option>HUMANA VIVIR</option>
+                        <option>SALUD COLPATRIA</option>
+                        <option>COOMEVA E.P.S</option>
+                        <option>FAMISANAR LTDA (CAFAM-CO)</option>
+                        <option>EPS S.O.S SER OCCIDENTAL SALUD</option>
+                        <option>E.P.S RISARALDA LTDA</option>
+                        <option>CAPRECOM E.P.S</option>
+                        <option>CORPORANONIMAS E.P.S</option>
+                        <option>E.P.S CONVIDA</option>
+                        <option>CRUZ BLANCA E.P.S S.A</option>
+                        <option>COMFAMILIAR GUAJIRA</option>
+                        <option>CAPRESOCA E.P.S</option>
+                        <option>SOLSALUD E.P.S</option>
+                        <option>BARRANQUILLA SANA E.P.S</option>
+                        <option>CALI SALUD E.P.S</option>
+                        <option>E.P.S CALDAS</option>
+                        <option>E.P.S CONDOR</option>
+                        <option>SELVASALUD S.A E.P.S</option>
+                        <option>COMFENALCO ARMENIA</option>
+                        <option>SALUDVIDA E.P.S.</option>
+                        <option>E.P.S. SALUD COLOMBIA</option>
+                        <option>RED SALUD ATENCION HUMANA EPS</option>
+                        <option>NUEVA EPS</option>
+                        <option>MULTIMEDICAS EPS SALUD</option>
+                        <option>GOLDEN GROUP S.A. EPS</option>
+                        <option>UNISALUD</option>
+                        <option>COMFACUNDI</option>
+                        <option>ASMET SALUD EPS</option>
+                        <option>CAPITAL SALUD</option>
+                        <option>EMCOSALUD</option>
+                        <option>AMBUQ</option>
+                        <option>ECOOPSOS</option>
+                        <option>FOSIGA</option>
+                        <option>SIN EPS</option>
+                        <option>PIJAOS SALUD E.P.S</option>
+                        <option>EMSSANAR</option>
+                        <option>POLICIA NACIONAL</option>
+                        <option>COOSALUD E.S.S.</option>
+                        <option>EMDISALUD ESS</option>
+                        <option>CAPITAL SALUD EPS S.A.S.</option>
+                        <option>ENTIDAD PROMOTORA DE SALUD "P"</option>
+                        <option>EPS MALLAMAS EPSI</option>
+                        <option>EPS ANAS WAYUU</option>
+                        <option>ASOCIACION INDIGENA DEL CAUCA</option>
+                        <option>MANEXKA</option>
+                        <option>DUSAKAWI</option>
+                        <option>CAPRESOCA EPS</option>
+                        <option>CONVIDA</option>
+                        <option>COMPARTA E.P.S</option>
+                        <option>ASOC. MUTUAL SER EMPRESA SOLID</option>
+                        <option>COMFACOR</option>
+                        <option>FERROCARILES</option>
+                        <option>CAJACOPI</option>
+                        <option>COMFASUCRE</option>
+                        <option>SAVIASALUD</option>
+                        <option>COMFAGUAJIRA</option>
+                        <option>FONDO PRESTAC SOC MAGISTERIO</option>
+                        <option>COMFABOY</option>
+                        <option>COMFACHOCO</option>
+                        <option>EMPRESAS PUBLICAS DE MEDELLIN</option>
+                        <option>DIR GRAL DE SANIDAD MILITAR</option>
+                        <option>COMFAORIENTE</option>
+                        <option>MEDIMAS EPS</option>
+                        <option>SUSALUD EPS</option>
+                        <option>DUSAKAWI EPS</option>
+                        <option>FUNDACIÓN SALUD MIA EPS</option>
+                        <option>EMPRESAS PÚBLICAS DE MEDELLÍNO</option>
+                        <option>FONDO DE FERROCARRILES NACION</option>
+                        <option>A.I.C.</option>
+                        <option>FOSYGA RÉGIMEN DE EXCEPCIÓN</option>
+                        <option>FOSYGA RESIDENTE EXTERIOR O RO</option>
+                        <option>UNIVERSIDAD DEL ATLÁNTICO</option>
+                        <option>UNIVERSIDAD INDUSTRIAL DE SANR</option>
+                        <option>UNIVERSIDAD DEL VALLE</option>
+                        <option>UNIVERSIDAD NACIONAL DE COLOMA</option>
+                        <option>UNIVERSIDAD DEL CAUCA</option>
+                        <option>UNIVERSIDAD DE ANTIOQUIA</option>
+                        <option>UNIVERSIDAD DE CÓRDOBA</option>
+                        <option>UNIVERSIDAD PEDAGÓGICA - UPTC</option>
+                        <option>MUTUAL SER</option>
+                        <option>EMSSANAR</option>
+                        <option>COOSALUD</option>
+                        <option>COMFAMILIAR HUILA</option>
+                        <option>COMFAMILIAR DE NARIÑO</option>
+                        <option>SAVIA SALUD</option>
+                        <option>COMFAMILIAR BOLIVAR</option>
+                        <option>COSMITET</option>
+                        <option>COMFANDI</option>
+                        <option>SUMIMEDICAL</option>
+                        <option>ECOPETROL</option>
+                        <option>FAMAC</option>
+                        <option>FUNDACION SALUD MIA EPS</option>
+                        <option>MEDISALUD</option>
+                        <option>FUERZAS MILITARES</option>
+                        <option>UNION TEMPORAL TOLIHUILA</option>
+                        <option>UT SERVISALUD SAN JOSE</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="documentoEPSFile" class="form-label">Cargar certificado de afiliación a EPS (Con fecha de expedición no mayor a 30 días, no se acepta carnet de EPS)</label>

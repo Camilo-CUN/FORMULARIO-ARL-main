@@ -24,9 +24,9 @@
                                 <option>Práctica social</option>
                                 <option>Combinación de funciones</option>
                                 <option>Pasantía en Investigación</option>
-                                <option>Monitoria</option>
-                                <option value="Cunbre emprendimiento naciente">Cunbre emprendimiento naciente</option>
-                                <option value="Cunbre emprendimiento consolidado">Cunbre emprendimiento consolidado
+                                <option value="Monitoria">Monitoria</option>
+                                <option value="Cunbre emprendimiento naciente">CUNbre emprendimiento naciente</option>
+                                <option value="Cunbre emprendimiento consolidado">CUNbre emprendimiento consolidado
                                 </option>
                             </select><br>
 
@@ -365,13 +365,13 @@
                         <div *ngIf="formData.ModalidadPractica !== 'Cunbre emprendimiento consolidado' && formData.ModalidadPractica !== 'Cunbre emprendimiento naciente'"
                             class="mb-3">
                             <label for="fechaInicioPractica">Fecha de inicio de la práctica</label>
-                            <input type="date" name="FechaInicioPractica" class="form-control" id="fechaInicioPractica"
+                            <input type="datetime-local" [min]="minDate"  name="FechaInicioPractica" class="form-control" id="fechaInicioPractica"
                                 [(ngModel)]="formData.FechaInicioPractica">
                         </div>
                         <div *ngIf="formData.ModalidadPractica !== 'Cunbre emprendimiento consolidado' && formData.ModalidadPractica !== 'Cunbre emprendimiento naciente'"
                             class="mb-3">
                             <label for="fechaTerminacionPractica">Fecha de terminación de la práctica</label>
-                            <input type="date" name="FechaTerminacionPractica" class="form-control"
+                            <input type="datetime-local" [min]="maxDate" name="FechaTerminacionPractica" class="form-control"
                                 id="fechaTerminacionPractica" [(ngModel)]="formData.FechaTerminacionPractica">
                         </div>
                         <div *ngIf="formData.ModalidadPractica !== 'Cunbre emprendimiento consolidado' && formData.ModalidadPractica !== 'Cunbre emprendimiento naciente'"

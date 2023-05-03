@@ -22,6 +22,9 @@ import * as XLSX from 'xlsx';
 
 export class FormPageComponent implements OnInit {
 
+//  public fechaActual: Date = new Date();
+  minDate: string;
+  maxDate: string;
 
 
   isLoading = true;
@@ -63,17 +66,17 @@ export class FormPageComponent implements OnInit {
   public dataa: any[] = [];
   
   buscar(): void {
-    const busqueda = this.formData.busqueda; // Busqueda tal cual como se ingresó
+    const busqueda = this.formData.busqueda.toLowerCase(); // Busqueda en minúsculas
     console.log('Busqueda:', busqueda);
     const opciones = this.dataa.slice(1); // Omitir la primera fila que contiene los encabezados
     const mejoresCoincidencias = opciones.filter(opcion =>
-      opcion[0] && opcion[0].includes(busqueda)
+      opcion[0] && opcion[0].toLowerCase().includes(busqueda) // Convertir a minúsculas
     ).map(opcion => opcion[0]);
   
     this.coincidencias = mejoresCoincidencias;
     this.formData.seleccion = mejoresCoincidencias[1]; 
     console.log(this.coincidencias);
-}
+  }
 public CargarData(): void {
   this.http.get('/assets/PLANTILLA ARL.xlsx', { responseType: 'arraybuffer' }).subscribe((data) => {
     const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
@@ -83,48 +86,55 @@ public CargarData(): void {
   });
 }
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient){
+    const today = new Date();
+    const dosDias = new Date(today.setDate(today.getDate()+2));
+    this.minDate = dosDias.toISOString().slice(0, 16);
+    
+    
+    // const todayy = new Date();
+    const TreintaDias = new Date(dosDias.setDate(dosDias.getDate()+32));
+    this.maxDate = TreintaDias.toISOString().slice(0, 16);
+
+  }
     //constructor de el servicio ,private correosAfiliacionesService:CorreosAfiliacionesService){}
   
     //Funcion que se ejecuta para convertir los input en formato json al hacer click en enviar
   submitForm() {
 
-    if(!this.formData.EmailEstudiante.includes("@")||!this.formData.EmailPersonaAcargoPractica.includes("@")){
-      Swal.fire({
-        title: '¡Error!',
-        text: 'Debes ingresar un email valido',
-        icon: 'warning'
-      });
-    }
-    if(this.formData.EmailEstudiante == "" || this.formData.ModalidadPractica == "" || this.formData.PeriodoAcademico == "" || this.formData.DocumentoIdentidadFile == ""
-    ||this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.ProgramaAcademico == "" || this.formData.TipoPractica == ""
-    ||this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.NumeroTelEstudiante == "" || this.formData.CorreoInstitucional == ""
-    ||this.formData.NombreEmpresaPracticas == "" || this.formData.NitEmpresaPracticas == "" || this.formData.RiesgoEstudiante == "" || this.formData.NombrePersonaAcargoPractica == ""  || this.formData.TelefonoPersonasAcargo == "" || this.formData.EmailPersonaAcargoPractica == ""
-    ||this.formData.FechaInicioPractica == "" ||this.formData.TipoIdentificacion == "" || this.formData.FechaTerminacionPractica == "" || this.formData.FechaTerminacionPractica == "" || this.formData.ActaInicioPractica == "" || this.formData.Regional == ""){
-      Swal.fire({
-        title: '¡Error!',
-        text: 'Todos los campos son obligatorios',
-        icon: 'warning'
-      });
-    }else return this.Enviar()
-
-    if(this.formData.ModalidadPractica == "Opcion1", this.formData.ModalidadPractica == "Opcion2"){
-      if(this.formData.EmailEstudiante == "" || this.formData.RutFile == "" || this.formData.NombreEmprendimiento == "" || this.formData.NitEmprendimiento =="" || this.formData.CamaraComrcioFile == "" || this.formData.PeriodoAcademico == "" || this.formData.DocumentoIdentidadFile == ""
-      ||this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.ProgramaAcademico == "" || this.formData.TipoPractica == ""
-      ||this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.NumeroTelEstudiante == "" || this.formData.CorreoInstitucional == ""
-      ||this.formData.NombreEmpresaPracticas == "" || this.formData.NitEmpresaPracticas == "" || this.formData.RiesgoEstudiante == "" || this.formData.NombrePersonaAcargoPractica == ""  || this.formData.TelefonoPersonasAcargo == "" || this.formData.EmailPersonaAcargoPractica == ""
-      ||this.formData.FechaInicioPractica == "" || this.formData.FechaTerminacionPractica == "" || this.formData.FechaTerminacionPractica == "" || this.formData.ActaInicioPractica == "" || this.formData.Regional == ""){
+    if (this.formData.ModalidadPractica == "Cunbre emprendimiento consolidado") {
+      if (this.formData.EmailEstudiante == "" || this.formData.RutFile == "" || this.formData.CamaraComrcioFile == "" || this.formData.NombreEmprendimiento == "" || this.formData.NitEmprendimiento == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.TipoIdentificacion == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.PeriodoAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.CorreoInstitucional == "" || this.formData.seleccion == "" || this.formData.Regional == "") {
         Swal.fire({
           title: '¡Error!',
           text: 'Todos los campos son obligatorios',
           icon: 'warning'
         });
-      }else return this.Enviar()
+      } else {
+        return this.Enviar();
+      }
+    } else{
+      if(this.formData.ModalidadPractica == "Cunbre emprendimiento naciente"){
+      if (this.formData.EmailEstudiante == "" || this.formData.RutFile == ""|| this.formData.NombreEmprendimiento == "" || this.formData.NitEmprendimiento == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.TipoIdentificacion == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.PeriodoAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.CorreoInstitucional == "" || this.formData.seleccion == "" || this.formData.Regional == "") {
+        Swal.fire({
+          title: '¡Error!',
+          text: 'Todos los campos son obligatorios',
+          icon: 'warning'
+      });
+      }else {
+        return this.Enviar();
+      }
+    }else{
+      if(this.formData.EmailEstudiante == "" || this.formData.ModalidadPractica == "" || this.formData.PeriodoAcademico == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.ProgramaAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.NumeroTelEstudiante == "" || this.formData.CorreoInstitucional == "" || this.formData.NombreEmpresaPracticas == "" || this.formData.NitEmpresaPracticas == "" || this.formData.RiesgoEstudiante == "" || this.formData.NombrePersonaAcargoPractica == "" || this.formData.TelefonoPersonasAcargo == "" || this.formData.EmailPersonaAcargoPractica == "" || this.formData.FechaInicioPractica == "" || this.formData.TipoIdentificacion == "" || this.formData.FechaTerminacionPractica == "" || this.formData.ActaInicioPractica == "" || this.formData.Regional == ""){
+        Swal.fire({
+          title: '¡Error!',
+          text: 'Todos los campos son obligatorios',
+          icon: 'warning'
+      });
+      }else{
+        return this.Enviar();
+      }
     }
-
-
-
-
+    }
 
 
 }
@@ -161,6 +171,7 @@ Enviar(){
     form.append('FechaTerminacionPractica', this.formData.FechaTerminacionPractica);
     form.append('ActaInicioPractica', this.formData.ActaInicioPractica);
     form.append('Regional', this.formData.Regional);
+    form.append("seleccion",this.formData.seleccion)
     
     const formDataJson = JSON.stringify(this.formData);
     //console.log(formDataJson);

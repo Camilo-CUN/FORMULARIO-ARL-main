@@ -31,6 +31,7 @@ export class FormPageComponent implements OnInit {
     ModalidadPractica: '',
     PeriodoAcademico:'',
     DocumentoIdentidadFile: '',
+    TipoIdentificacion:'',
     NumeroIdentifiacion:'',
     NombreEstudiante:'',
     ProgramaAcademico:'',
@@ -99,7 +100,7 @@ public CargarData(): void {
     ||this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.ProgramaAcademico == "" || this.formData.TipoPractica == ""
     ||this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.NumeroTelEstudiante == "" || this.formData.CorreoInstitucional == ""
     ||this.formData.NombreEmpresaPracticas == "" || this.formData.NitEmpresaPracticas == "" || this.formData.RiesgoEstudiante == "" || this.formData.NombrePersonaAcargoPractica == ""  || this.formData.TelefonoPersonasAcargo == "" || this.formData.EmailPersonaAcargoPractica == ""
-    ||this.formData.FechaInicioPractica == "" || this.formData.FechaTerminacionPractica == "" || this.formData.FechaTerminacionPractica == "" || this.formData.ActaInicioPractica == "" || this.formData.Regional == ""){
+    ||this.formData.FechaInicioPractica == "" ||this.formData.TipoIdentificacion == "" || this.formData.FechaTerminacionPractica == "" || this.formData.FechaTerminacionPractica == "" || this.formData.ActaInicioPractica == "" || this.formData.Regional == ""){
       Swal.fire({
         title: '¡Error!',
         text: 'Todos los campos son obligatorios',
@@ -137,6 +138,7 @@ Enviar(){
     form.append('PeriodoAcademico', this.formData.PeriodoAcademico);
     form.append("DocumentoIdentidadFile", this.formData.DocumentoIdentidadFile);
     form.append('NumeroIdentifiacion', this.formData.NumeroIdentifiacion);
+    form.append('TipoIdentifiacion', this.formData.TipoIdentificacion);
     form.append('NombreEstudiante', this.formData.NombreEstudiante);
     form.append('ProgramaAcademico', this.formData.ProgramaAcademico);
     form.append('TipoPractica', this.formData.TipoPractica);

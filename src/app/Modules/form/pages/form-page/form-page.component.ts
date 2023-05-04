@@ -147,7 +147,7 @@ public CargarData(): void {
         });
       }else{
         const Vacio = "NA"
-        this.formData.CamaraComercioFile = ''
+        // this.formData.CamaraComercioFile = null;
         this.formData.NitEmprendimiento = Vacio
         this.formData.NombreEmprendimiento = Vacio
         this.formData.RutFile = ''

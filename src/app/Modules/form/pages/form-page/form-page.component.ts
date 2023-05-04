@@ -83,7 +83,7 @@ public CargarData(): void {
     this.dataa = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
   });
 }
-//Campo Fechas 
+//Campo Limite Fechas 
   constructor(private http: HttpClient){
     const today = new Date();
     const dosDias = new Date(today.setDate(today.getDate()+2));
@@ -99,7 +99,7 @@ public CargarData(): void {
   
     //Funcion que se ejecuta para convertir los input en formato json al hacer click en enviar
   submitForm() {
-
+    //verificacion De CUNBRe
     if (this.formData.ModalidadPractica == "Cunbre emprendimiento consolidado") {
       if (this.formData.EmailEstudiante == "" || this.formData.RutFile == "" || this.formData.CamaraComercioFile == "" || this.formData.NombreEmprendimiento == "" || this.formData.NitEmprendimiento == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.TipoIdentificacion == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.PeriodoAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.CorreoInstitucional == "" || this.formData.seleccion == "" || this.formData.Regional == "") {
         Swal.fire({
@@ -108,6 +108,7 @@ public CargarData(): void {
           icon: 'warning'
         });
       } else {
+        //Asignacion de no Aplica para los input que desaparecen 
         const Vacio = "NA"
         this.formData.RiesgoEstudiante = Vacio
         this.formData.NombrePersonaAcargoPractica = Vacio
@@ -120,21 +121,25 @@ public CargarData(): void {
       }
     } else{
       if(this.formData.ModalidadPractica == "Cunbre emprendimiento naciente"){
-      if (this.formData.EmailEstudiante == "" || this.formData.RutFile == ""|| this.formData.NombreEmprendimiento == "" || this.formData.NitEmprendimiento == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.TipoIdentificacion == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.PeriodoAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.CorreoInstitucional == "" || this.formData.seleccion == "" || this.formData.Regional == "") {
+        if (this.formData.EmailEstudiante == "" || this.formData.RutFile == ""|| this.formData.NombreEmprendimiento == "" || this.formData.NitEmprendimiento == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.TipoIdentificacion == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.PeriodoAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.CorreoInstitucional == "" || this.formData.seleccion == "" || this.formData.Regional == "") {
         Swal.fire({
           title: '¡Error!',
           text: 'Todos los campos son obligatorios',
           icon: 'warning'
         });
       }else {
+        //Asignacion de no Aplica para los input que desaparecen 
         const Vacio = "NA"
         this.formData.CamaraComercioFile = ''
         this.formData.RiesgoEstudiante = Vacio
         this.formData.NombrePersonaAcargoPractica = Vacio
-        this.formData.TelefonoPersonasAcargo = Vacio
+        this.formData.TelefonoPersonasAcargo = ''
         this.formData.EmailPersonaAcargoPractica = Vacio
         this.formData.FechaInicioPractica = Vacio
         this.formData.FechaTerminacionPractica = Vacio
+        this.formData.NitEmpresaPracticas = ''
+        this.formData.NumeroTelEstudiante = ''
+        this.formData.NombreEmpresaPracticas = Vacio
         this.formData.ActaInicioPractica = ''
         return this.Enviar();
       }
@@ -146,6 +151,7 @@ public CargarData(): void {
           icon: 'warning'
         });
       }else{
+        //Asignacion de no Aplica para los input que desaparecen 
         const Vacio = "NA"
         // this.formData.CamaraComercioFile = null;
         this.formData.NitEmprendimiento = Vacio
@@ -159,7 +165,7 @@ public CargarData(): void {
 
 }
 
-
+    //Funcion enviar que añade los input al JSON y hace post a la api
 Enviar(){
     this.isLoading = true;
     const form = new FormData();
@@ -234,7 +240,7 @@ Enviar(){
         }
       );
 
-
+      //Muestra el JSON en una nueva ventana con finalidad de comprobar la integridad de los datos
       // const blob = new Blob([formDataJson] , {type: 'application/json'});
       // const url = window.URL.createObjectURL(blob);
       // const link = document.createElement('a');
@@ -247,7 +253,7 @@ Enviar(){
 
 }
 
-//Funcion para Convertir los input para
+//Funcion Que convierte los input de tipo file a base 64 para poder enviarlos en formato json
 onFileChange(event: any) {
   const file = event.target.files[0];
   if (!file) {

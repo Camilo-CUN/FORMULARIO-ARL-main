@@ -42,7 +42,7 @@ export class FormPageComponent implements OnInit {
     RutFile:'',
     NombreEmprendimiento:'',
     NitEmprendimiento:'',
-    CamaraComrcioFile:'',
+    CamaraComercioFile:'',
     FechaNacimiento:'',
     EpsEstudiante:'',
     DocumentoEPSFile:'',
@@ -101,40 +101,56 @@ public CargarData(): void {
   submitForm() {
 
     if (this.formData.ModalidadPractica == "Cunbre emprendimiento consolidado") {
-      if (this.formData.EmailEstudiante == "" || this.formData.RutFile == "" || this.formData.CamaraComrcioFile == "" || this.formData.NombreEmprendimiento == "" || this.formData.NitEmprendimiento == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.TipoIdentificacion == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.PeriodoAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.CorreoInstitucional == "" || this.formData.seleccion == "" || this.formData.Regional == "") {
+      if (this.formData.EmailEstudiante == "" || this.formData.RutFile == "" || this.formData.CamaraComercioFile == "" || this.formData.NombreEmprendimiento == "" || this.formData.NitEmprendimiento == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.TipoIdentificacion == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.PeriodoAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.CorreoInstitucional == "" || this.formData.seleccion == "" || this.formData.Regional == "") {
         Swal.fire({
           title: '¡Error!',
           text: 'Todos los campos son obligatorios',
           icon: 'warning'
         });
       } else {
+        const Vacio = "NA"
+        this.formData.RiesgoEstudiante = Vacio
+        this.formData.NombrePersonaAcargoPractica = Vacio
+        this.formData.TelefonoPersonasAcargo = Vacio
+        this.formData.EmailPersonaAcargoPractica = Vacio
+        this.formData.FechaInicioPractica = Vacio
+        this.formData.FechaTerminacionPractica = Vacio
+        this.formData.ActaInicioPractica = ''
         return this.Enviar();
       }
     } else{
       if(this.formData.ModalidadPractica == "Cunbre emprendimiento naciente"){
       if (this.formData.EmailEstudiante == "" || this.formData.RutFile == ""|| this.formData.NombreEmprendimiento == "" || this.formData.NitEmprendimiento == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.TipoIdentificacion == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.PeriodoAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.CorreoInstitucional == "" || this.formData.seleccion == "" || this.formData.Regional == "") {
-        this.formData.CamaraComrcioFile = "X"
         Swal.fire({
           title: '¡Error!',
           text: 'Todos los campos son obligatorios',
           icon: 'warning'
-      });
+        });
       }else {
+        const Vacio = "NA"
+        this.formData.CamaraComercioFile = ''
+        this.formData.RiesgoEstudiante = Vacio
+        this.formData.NombrePersonaAcargoPractica = Vacio
+        this.formData.TelefonoPersonasAcargo = Vacio
+        this.formData.EmailPersonaAcargoPractica = Vacio
+        this.formData.FechaInicioPractica = Vacio
+        this.formData.FechaTerminacionPractica = Vacio
+        this.formData.ActaInicioPractica = ''
         return this.Enviar();
       }
     }else{
       if(this.formData.EmailEstudiante == "" || this.formData.ModalidadPractica == "" || this.formData.PeriodoAcademico == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.ProgramaAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.NumeroTelEstudiante == "" || this.formData.CorreoInstitucional == "" || this.formData.NombreEmpresaPracticas == "" || this.formData.NitEmpresaPracticas == "" || this.formData.RiesgoEstudiante == "" || this.formData.NombrePersonaAcargoPractica == "" || this.formData.TelefonoPersonasAcargo == "" || this.formData.EmailPersonaAcargoPractica == "" || this.formData.FechaInicioPractica == "" || this.formData.TipoIdentificacion == "" || this.formData.FechaTerminacionPractica == "" || this.formData.ActaInicioPractica == "" || this.formData.Regional == ""){
-        const Vacio = "X"
-        this.formData.CamaraComrcioFile = Vacio
-        this.formData.NitEmprendimiento = Vacio
-        this.formData.NombreEmprendimiento = Vacio
-        this.formData.RutFile = Vacio
         Swal.fire({
           title: '¡Error!',
           text: 'Todos los campos son obligatorios',
           icon: 'warning'
-      });
+        });
       }else{
+        const Vacio = "NA"
+        this.formData.CamaraComercioFile = ''
+        this.formData.NitEmprendimiento = Vacio
+        this.formData.NombreEmprendimiento = Vacio
+        this.formData.RutFile = ''
         return this.Enviar();
       }
     }
@@ -157,7 +173,7 @@ Enviar(){
     form.append('ProgramaAcademico', this.formData.ProgramaAcademico);
     form.append('TipoPractica', this.formData.TipoPractica);
     form.append('RutFile', this.formData.RutFile);
-    form.append('CamaraComercioFile', this.formData.CamaraComrcioFile);
+    form.append('CamaraComercioFile', this.formData.CamaraComercioFile);
     form.append('NombreEmprendimiento', this.formData.NombreEmprendimiento);
     form.append('NitEmprendimiento', this.formData.NitEmprendimiento);
     form.append('FechaNacimiento', this.formData.FechaNacimiento);
@@ -287,7 +303,7 @@ onFileChange(event: any) {
     reader.onload = () =>{
       if(reader.result){
         const base68 = reader.result.toString().split(',')[1];
-        this.formData.CamaraComrcioFile = base68;
+        this.formData.CamaraComercioFile = base68;
       }else{
         console.error("Error De archivo")
       }

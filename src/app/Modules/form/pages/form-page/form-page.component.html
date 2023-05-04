@@ -293,8 +293,8 @@
 
                         <div class="mb-3">
                             <label for="municipio">Municipio, Busque y Seleccione la opcion que mas coincida</label>
-                            <input class="form-control" id="municipio" type="text" [(ngModel)]="formData.busqueda"
-                                (input)="buscar()" [ngModelOptions]="{standalone: true}" />
+                            <input class="form-control" id="municipio" type="text" 
+                                (input)="buscar()" [(ngModel)]="busqueda" [ngModelOptions]="{standalone: true}" />
                             <select class="form-control" [(ngModel)]="formData.seleccion"
                                 [ngModelOptions]="{standalone: true}">
                                 <option *ngFor="let item of coincidencias" [value]="item">{{item}}</option>
@@ -304,7 +304,7 @@
                         <div *ngIf="formData.ModalidadPractica !== 'Cunbre emprendimiento consolidado' && formData.ModalidadPractica !== 'Cunbre emprendimiento naciente'"
                             class="mb-3">
                             <label for="numeroTelEstudiante">Número telefónico del estudiante</label>
-                            <input type="number" name="NumeroTelEstudiante" id="numeroTelEstudiante"
+                            <input type="text" name="NumeroTelEstudiante" id="numeroTelEstudiante"
                                 class="form-control" [(ngModel)]="formData.NumeroTelEstudiante">
                         </div>
                         <div class="mb-3">

@@ -58,19 +58,17 @@ export class FormPageComponent implements OnInit {
     FechaTerminacionPractica:'',
     ActaInicioPractica:'',
     Regional:'',
-    busqueda:'',
     seleccion:''
   }
   coincidencias: string[] = [];
-  
+  busqueda: string = ""
   public dataa: any[] = [];
   
   buscar(): void {
-    const busqueda = this.formData.busqueda.toLowerCase(); // Busqueda en minúsculas
-    console.log('Busqueda:', busqueda);
+    const busquedaa = this.busqueda.toLowerCase(); // Busqueda en minúsculas
     const opciones = this.dataa.slice(1); // Omitir la primera fila que contiene los encabezados
     const mejoresCoincidencias = opciones.filter(opcion =>
-      opcion[0] && opcion[0].toLowerCase().includes(busqueda) // Convertir a minúsculas
+      opcion[0] && opcion[0].toLowerCase().includes(busquedaa) // Convertir a minúsculas
     ).map(opcion => opcion[0]);
   
     this.coincidencias = mejoresCoincidencias;
@@ -85,7 +83,7 @@ public CargarData(): void {
     this.dataa = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
   });
 }
-
+//Campo Fechas 
   constructor(private http: HttpClient){
     const today = new Date();
     const dosDias = new Date(today.setDate(today.getDate()+2));
@@ -115,6 +113,7 @@ public CargarData(): void {
     } else{
       if(this.formData.ModalidadPractica == "Cunbre emprendimiento naciente"){
       if (this.formData.EmailEstudiante == "" || this.formData.RutFile == ""|| this.formData.NombreEmprendimiento == "" || this.formData.NitEmprendimiento == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.TipoIdentificacion == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.PeriodoAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.CorreoInstitucional == "" || this.formData.seleccion == "" || this.formData.Regional == "") {
+        this.formData.CamaraComrcioFile = "X"
         Swal.fire({
           title: '¡Error!',
           text: 'Todos los campos son obligatorios',
@@ -125,6 +124,11 @@ public CargarData(): void {
       }
     }else{
       if(this.formData.EmailEstudiante == "" || this.formData.ModalidadPractica == "" || this.formData.PeriodoAcademico == "" || this.formData.DocumentoIdentidadFile == "" || this.formData.NumeroIdentifiacion == "" || this.formData.NombreEstudiante == "" || this.formData.ProgramaAcademico == "" || this.formData.TipoPractica == "" || this.formData.FechaNacimiento == "" || this.formData.EpsEstudiante == "" || this.formData.DocumentoEPSFile == "" || this.formData.NumeroTelEstudiante == "" || this.formData.CorreoInstitucional == "" || this.formData.NombreEmpresaPracticas == "" || this.formData.NitEmpresaPracticas == "" || this.formData.RiesgoEstudiante == "" || this.formData.NombrePersonaAcargoPractica == "" || this.formData.TelefonoPersonasAcargo == "" || this.formData.EmailPersonaAcargoPractica == "" || this.formData.FechaInicioPractica == "" || this.formData.TipoIdentificacion == "" || this.formData.FechaTerminacionPractica == "" || this.formData.ActaInicioPractica == "" || this.formData.Regional == ""){
+        const Vacio = "X"
+        this.formData.CamaraComrcioFile = Vacio
+        this.formData.NitEmprendimiento = Vacio
+        this.formData.NombreEmprendimiento = Vacio
+        this.formData.RutFile = Vacio
         Swal.fire({
           title: '¡Error!',
           text: 'Todos los campos son obligatorios',

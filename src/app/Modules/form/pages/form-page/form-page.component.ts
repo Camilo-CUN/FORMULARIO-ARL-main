@@ -83,6 +83,7 @@ public CargarData(): void {
     this.dataa = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
   });
 }
+//eee
 //Campo Limite Fechas 
   constructor(private http: HttpClient){
     const today = new Date();
@@ -154,7 +155,7 @@ public CargarData(): void {
         //Asignacion de no Aplica para los input que desaparecen 
         const Vacio = "NA"
         // this.formData.CamaraComercioFile = null;
-        this.formData.NitEmprendimiento = Vacio
+        this.formData.NitEmprendimiento = ''
         this.formData.NombreEmprendimiento = Vacio
         this.formData.RutFile = ''
         return this.Enviar();

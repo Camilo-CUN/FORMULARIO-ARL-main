@@ -30,8 +30,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Para ejecutar el programa instalar bootstrap - jquery - popper
 ## Como desplegar
 Para poder desplegar en lago ejecutar: 
-nvm install 17
-npm install
-npm install -g @angular/cli@11
-ng build
-Apuntar el VHost a dist/form-api
+- `nvm install 17`
+- `npm install`
+- `npm install -g @angular/cli@11`
+- `ng build`
+- Apuntar el VHost a dist/form-api

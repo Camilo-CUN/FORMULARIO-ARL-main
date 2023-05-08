@@ -364,7 +364,7 @@
                         </div>
                         <div *ngIf="formData.ModalidadPractica !== 'Cunbre emprendimiento consolidado' && formData.ModalidadPractica !== 'Cunbre emprendimiento naciente'"
                             class="mb-3">
-                            <label for="fechaInicioPractica">Fecha de inicio de la práctica</label>
+                            <label for="fechaInicioPractica">Fecha de inicio de la práctica, La fecha de inicio de tu práctica  debe ser  3 días  después  de hacer esta solicitud, recuerda que esta fecha debe coincidir con el acta de inicio que cargas en este formulario.</label>
                             <input type="datetime-local" [min]="minDate"  name="FechaInicioPractica" class="form-control" id="fechaInicioPractica"
                                 [(ngModel)]="formData.FechaInicioPractica">
                         </div>

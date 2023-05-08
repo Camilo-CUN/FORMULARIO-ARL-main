@@ -87,7 +87,7 @@ public CargarData(): void {
 //Campo Limite Fechas 
   constructor(private http: HttpClient){
     const today = new Date();
-    const dosDias = new Date(today.setDate(today.getDate()+2));
+    const dosDias = new Date(today.setDate(today.getDate()+3));
     this.minDate = dosDias.toISOString().slice(0, 16);
     
     

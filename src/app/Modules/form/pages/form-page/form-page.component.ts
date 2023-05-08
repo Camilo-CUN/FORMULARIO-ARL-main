@@ -112,7 +112,7 @@ public CargarData(): void {
         const Vacio = "NA"
         this.formData.RiesgoEstudiante = Vacio
         this.formData.NombrePersonaAcargoPractica = Vacio
-        this.formData.TelefonoPersonasAcargo = Vacio
+        this.formData.TelefonoPersonasAcargo = '0'
         this.formData.EmailPersonaAcargoPractica = Vacio
         this.formData.FechaInicioPractica = Vacio
         this.formData.FechaTerminacionPractica = Vacio

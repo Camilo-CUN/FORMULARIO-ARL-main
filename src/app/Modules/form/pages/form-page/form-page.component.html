@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="nitEmprendimiento" class="form-label">NIT de su Emprendimiento</label>
-                                    <input type="number" name="NitEmprendimiento" class="form-control"
+                                    <input type="text" name="NitEmprendimiento" class="form-control"
                                         id="NitEmprendimiento" required [(ngModel)]="formData.NitEmprendimiento">
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="nitEmprendimiento" class="form-label">NIT de su Emprendimiento</label>
-                                    <input type="number" name="NitEmprendimiento" class="form-control"
+                                    <input type= "text" name="NitEmprendimiento" class="form-control"
                                         id="NitEmprendimiento" required [(ngModel)]="formData.NitEmprendimiento">
                                 </div>
 
@@ -303,7 +303,7 @@
                         <div *ngIf="formData.ModalidadPractica !== 'Cunbre emprendimiento consolidado' && formData.ModalidadPractica !== 'Cunbre emprendimiento naciente'"
                             class="mb-3">
                             <label for="numeroTelEstudiante">Número telefónico del estudiante</label>
-                            <input type="number" name="NumeroTelEstudiante" id="numeroTelEstudiante"
+                            <input type="text" name="NumeroTelEstudiante" id="numeroTelEstudiante"
                                 class="form-control" [(ngModel)]="formData.NumeroTelEstudiante">
                         </div>
                         <div class="mb-3">
@@ -324,7 +324,7 @@
                             class="mb-3">
                             <label for="nitEmpresaPracticas">Nit de la empresa donde el estudiante va a desarrollar la
                                 práctica</label>
-                            <input type="number" name="NitEmpresaPracticas" id="nitEmpresaPracticas"
+                            <input type="text" name="NitEmpresaPracticas" id="nitEmpresaPracticas"
                                 class="form-control" [(ngModel)]="formData.NitEmpresaPracticas">
                         </div>
                         <div
@@ -351,7 +351,7 @@
                             class="mb-3">
                             <label for="telefonoPersonasAcargoPractica">Teléfono de la persona que estará a cargo de
                                 proceso de la práctica del estudiante en la empresa</label>
-                            <input type="number" name="TelefonoPersonasAcargoPractica" class="form-control"
+                            <input type="text" name="TelefonoPersonasAcargoPractica" class="form-control"
                                 id="telefonoPersonasAcargoPractica" [(ngModel)]="formData.TelefonoPersonasAcargo">
                         </div>
                         <div *ngIf="formData.ModalidadPractica !== 'Cunbre emprendimiento consolidado' && formData.ModalidadPractica !== 'Cunbre emprendimiento naciente'"

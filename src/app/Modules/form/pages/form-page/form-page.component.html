@@ -9,13 +9,13 @@
                 <div class="card-body">
                     <form class="form-control" enctype="multipart/form-data">
                         <div class="mb-3">
-                            <label for="emailEstudiante" class="form-label">Correo Personal</label>
+                            <label for="emailEstudiante" class="form-label">Correo personal</label>
                             <input type="email" name="EmailEstudiante" class="form-control" id="emailEstudiante"
                                 required [(ngModel)]="formData.EmailEstudiante">
                         </div>
                         <div class="mb-3">
                             <label for="modalidadPractica" class="form-label">Modalidad en la cual va desarrollar su
-                                practica</label>
+                                práctica</label>
                             <select name="ModalidadPractica" id="modalidadPractica" class="form-select"
                                 [(ngModel)]="formData.ModalidadPractica">
                                 <option>Seleccionar</option>
@@ -24,7 +24,7 @@
                                 <option>Práctica social</option>
                                 <option>Combinación de funciones</option>
                                 <option>Pasantía en Investigación</option>
-                                <option value="Monitoria">Monitoria</option>
+                                <option value="Monitoria">Monitoría</option>
                                 <option value="Cunbre emprendimiento naciente">CUNbre emprendimiento naciente</option>
                                 <option value="Cunbre emprendimiento consolidado">CUNbre emprendimiento consolidado
                                 </option>
@@ -292,7 +292,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="municipio">Municipio, Busque y Seleccione la opcion que mas coincida</label>
+                            <label for="municipio">Municipio, busque y seleccione la opción que mas coincida</label>
                             <input class="form-control" id="municipio" type="text" 
                                 (input)="buscar()" [(ngModel)]="busqueda" [ngModelOptions]="{standalone: true}" />
                             <select class="form-control" [(ngModel)]="formData.seleccion"

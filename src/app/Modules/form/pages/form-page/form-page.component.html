@@ -7,7 +7,7 @@
                 </div>
                 <img src="./assets/Portada.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <form class="form-control" enctype="multipart/form-data">
+                    <form class="form-control" #ArlForm="ngForm" (ngSubmit)="submitForm(ArlForm)" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="emailEstudiante" class="form-label">Correo personal</label>
                             <input type="email" name="EmailEstudiante" class="form-control" id="emailEstudiante"
@@ -417,7 +417,7 @@
                         </p>
                         <strong>El haber diligenciado este formulario no garantiza la afiliación a ARL</strong>
                         <br><br>
-                        <button (click)="submitForm()" type="submit" class="btn btn-success">Siguiente</button>
+                        <button type="submit" class="btn btn-success">Siguiente</button>
                     </form>
                 </div>
             </div>

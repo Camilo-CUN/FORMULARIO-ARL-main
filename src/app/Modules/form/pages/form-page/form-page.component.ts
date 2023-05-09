@@ -226,7 +226,9 @@ export class FormPageComponent implements OnInit {
     form.resetForm();
   }
   
-
+  Recarga(){
+    window.location.reload();
+  }
   //Funcion enviar que añade los input al JSON y hace post a la api
   Enviar() {
     this.isLoading = true;
@@ -294,32 +296,11 @@ export class FormPageComponent implements OnInit {
               title: '¡Éxito!',
               text: responseObject.message,
               icon: 'success',
+            }).then((result)=>{
+              if(result.isConfirmed){
+                return  this.Recarga();
+              }
             });
-            this.formData.EmailEstudiante = '' 
-            this.formData.ModalidadPractica ='' 
-            this.formData.PeriodoAcademico ='' 
-            this.formData.DocumentoIdentidadFile =''
-            this.formData.NumeroIdentifiacion ='' 
-            this.formData.NombreEstudiante ='' 
-            this.formData.ProgramaAcademico ='' 
-            this.formData.TipoPractica = '' 
-            this.formData.FechaNacimiento = '' 
-            this.formData.EpsEstudiante = '' 
-            this.formData.DocumentoEPSFile = '' 
-            this.formData.NumeroTelEstudiante ='' 
-            this.formData.CorreoInstitucional = '' 
-            this.formData.NombreEmpresaPracticas = '' 
-            this.formData.NitEmpresaPracticas ='' 
-            this.formData.RiesgoEstudiante ='' 
-            this.formData.NombrePersonaAcargoPractica =''
-            this.formData.TelefonoPersonasAcargo ='' 
-            this.formData.EmailPersonaAcargoPractica = '' 
-            this.formData.FechaInicioPractica ='' 
-            this.formData.TipoIdentificacion = '' 
-            this.formData.FechaTerminacionPractica ='' 
-            this.formData.ActaInicioPractica = '' 
-            this.formData.seleccion = '' 
-            this.formData.Regional =''
           } else {
             this.isLoading = false;
             Swal.fire({

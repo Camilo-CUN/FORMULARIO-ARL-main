@@ -28,19 +28,19 @@ export class FormPageComponent implements OnInit {
     EmailEstudiante: '',
     ModalidadPractica: '',
     PeriodoAcademico: '',
-    DocumentoIdentidadFile: '',
+    // DocumentoIdentidadFile: '',
     TipoIdentificacion: '',
     NumeroIdentifiacion: '',
     NombreEstudiante: '',
     ProgramaAcademico: '',
     TipoPractica: '',
-    RutFile: '',
+    // RutFile: '',
     NombreEmprendimiento: '',
     NitEmprendimiento: '',
-    CamaraComercioFile: '',
+    // CamaraComercioFile: '',
     FechaNacimiento: '',
     EpsEstudiante: '',
-    DocumentoEPSFile: '',
+    // DocumentoEPSFile: '',
     NumeroTelEstudiante: '',
     CorreoInstitucional: '',
     NombreEmpresaPracticas: '',
@@ -51,7 +51,7 @@ export class FormPageComponent implements OnInit {
     EmailPersonaAcargoPractica: '',
     FechaInicioPractica: '',
     FechaTerminacionPractica: '',
-    ActaInicioPractica: '',
+    // ActaInicioPractica: '',
     Regional: '',
     seleccion: '',
   };
@@ -103,11 +103,11 @@ export class FormPageComponent implements OnInit {
     ) {
       if (
         this.formData.EmailEstudiante == '' ||
-        this.formData.RutFile == '' ||
-        this.formData.CamaraComercioFile == '' ||
+        // this.formData.RutFile == '' ||
+        // this.formData.CamaraComercioFile == '' ||
         this.formData.NombreEmprendimiento == '' ||
         this.formData.NitEmprendimiento == '' ||
-        this.formData.DocumentoIdentidadFile == '' ||
+        // this.formData.DocumentoIdentidadFile == '' ||
         this.formData.TipoIdentificacion == '' ||
         this.formData.NumeroIdentifiacion == '' ||
         this.formData.NombreEstudiante == '' ||
@@ -115,7 +115,7 @@ export class FormPageComponent implements OnInit {
         this.formData.TipoPractica == '' ||
         this.formData.FechaNacimiento == '' ||
         this.formData.EpsEstudiante == '' ||
-        this.formData.DocumentoEPSFile == '' ||
+        // this.formData.DocumentoEPSFile == '' ||
         this.formData.CorreoInstitucional == '' ||
         this.formData.seleccion == '' ||
         this.formData.Regional == ''
@@ -134,17 +134,17 @@ export class FormPageComponent implements OnInit {
         this.formData.EmailPersonaAcargoPractica = Vacio;
         this.formData.FechaInicioPractica = Vacio;
         this.formData.FechaTerminacionPractica = Vacio;
-        this.formData.ActaInicioPractica = '';
+        // this.formData.ActaInicioPractica = '';
         return this.Enviar();
       }
     } else {
       if (this.formData.ModalidadPractica == 'Cunbre emprendimiento naciente') {
         if (
           this.formData.EmailEstudiante == '' ||
-          this.formData.RutFile == '' ||
+          // this.formData.RutFile == '' ||
           this.formData.NombreEmprendimiento == '' ||
           this.formData.NitEmprendimiento == '' ||
-          this.formData.DocumentoIdentidadFile == '' ||
+          // this.formData.DocumentoIdentidadFile == '' ||
           this.formData.TipoIdentificacion == '' ||
           this.formData.NumeroIdentifiacion == '' ||
           this.formData.NombreEstudiante == '' ||
@@ -152,7 +152,7 @@ export class FormPageComponent implements OnInit {
           this.formData.TipoPractica == '' ||
           this.formData.FechaNacimiento == '' ||
           this.formData.EpsEstudiante == '' ||
-          this.formData.DocumentoEPSFile == '' ||
+          // this.formData.DocumentoEPSFile == '' ||
           this.formData.CorreoInstitucional == '' ||
           this.formData.seleccion == '' ||
           this.formData.Regional == ''
@@ -165,7 +165,7 @@ export class FormPageComponent implements OnInit {
         } else {
           //Asignacion de no Aplica para los input que desaparecen
           const Vacio = 'NA';
-          this.formData.CamaraComercioFile = '';
+          // this.formData.CamaraComercioFile = '';
           this.formData.RiesgoEstudiante = Vacio;
           this.formData.NombrePersonaAcargoPractica = Vacio;
           this.formData.TelefonoPersonasAcargo = '';
@@ -175,7 +175,7 @@ export class FormPageComponent implements OnInit {
           this.formData.NitEmpresaPracticas = '';
           this.formData.NumeroTelEstudiante = '';
           this.formData.NombreEmpresaPracticas = Vacio;
-          this.formData.ActaInicioPractica = '';
+          // this.formData.ActaInicioPractica = '';
           return this.Enviar();
         }
       } else {
@@ -183,14 +183,14 @@ export class FormPageComponent implements OnInit {
           this.formData.EmailEstudiante == '' ||
           this.formData.ModalidadPractica == '' ||
           this.formData.PeriodoAcademico == '' ||
-          this.formData.DocumentoIdentidadFile == '' ||
+          // this.formData.DocumentoIdentidadFile == '' ||
           this.formData.NumeroIdentifiacion == '' ||
           this.formData.NombreEstudiante == '' ||
           this.formData.ProgramaAcademico == '' ||
           this.formData.TipoPractica == '' ||
           this.formData.FechaNacimiento == '' ||
           this.formData.EpsEstudiante == '' ||
-          this.formData.DocumentoEPSFile == '' ||
+          // this.formData.DocumentoEPSFile == '' ||
           this.formData.NumeroTelEstudiante == '' ||
           this.formData.CorreoInstitucional == '' ||
           this.formData.NombreEmpresaPracticas == '' ||
@@ -202,7 +202,7 @@ export class FormPageComponent implements OnInit {
           this.formData.FechaInicioPractica == '' ||
           this.formData.TipoIdentificacion == '' ||
           this.formData.FechaTerminacionPractica == '' ||
-          this.formData.ActaInicioPractica == '' ||
+          // this.formData.ActaInicioPractica == '' ||
           this.formData.seleccion == '' ||
           this.formData.Regional == ''
         ) {
@@ -217,7 +217,7 @@ export class FormPageComponent implements OnInit {
           // this.formData.CamaraComercioFile = null;
           this.formData.NitEmprendimiento = '';
           this.formData.NombreEmprendimiento = Vacio;
-          this.formData.RutFile = '';
+          // this.formData.RutFile = '';
           return this.Enviar();
         }
       }
@@ -236,19 +236,19 @@ export class FormPageComponent implements OnInit {
     form.append('EmailEstudiante', this.formData.EmailEstudiante);
     form.append('ModalidadPractica', this.formData.ModalidadPractica);
     form.append('PeriodoAcademico', this.formData.PeriodoAcademico);
-    form.append('DocumentoIdentidadFile', this.formData.DocumentoIdentidadFile);
+    // form.append('DocumentoIdentidadFile', this.formData.DocumentoIdentidadFile);
     form.append('NumeroIdentifiacion', this.formData.NumeroIdentifiacion);
     form.append('TipoIdentifiacion', this.formData.TipoIdentificacion);
     form.append('NombreEstudiante', this.formData.NombreEstudiante);
     form.append('ProgramaAcademico', this.formData.ProgramaAcademico);
     form.append('TipoPractica', this.formData.TipoPractica);
-    form.append('RutFile', this.formData.RutFile);
-    form.append('CamaraComercioFile', this.formData.CamaraComercioFile);
+    // form.append('RutFile', this.formData.RutFile);
+    // form.append('CamaraComercioFile', this.formData.CamaraComercioFile);
     form.append('NombreEmprendimiento', this.formData.NombreEmprendimiento);
     form.append('NitEmprendimiento', this.formData.NitEmprendimiento);
     form.append('FechaNacimiento', this.formData.FechaNacimiento);
     form.append('EpsEstudiante', this.formData.EpsEstudiante);
-    form.append('DocumentoEPSFile', this.formData.DocumentoEPSFile);
+    // form.append('DocumentoEPSFile', this.formData.DocumentoEPSFile);
     form.append('NumeroTelEstudiante', this.formData.NumeroTelEstudiante);
     form.append('CorreoInstitucional', this.formData.CorreoInstitucional);
     form.append('NombreEmpresaPracticas', this.formData.NombreEmpresaPracticas);
@@ -268,7 +268,7 @@ export class FormPageComponent implements OnInit {
       'FechaTerminacionPractica',
       this.formData.FechaTerminacionPractica
     );
-    form.append('ActaInicioPractica', this.formData.ActaInicioPractica);
+    // form.append('ActaInicioPractica', this.formData.ActaInicioPractica);
     form.append('Regional', this.formData.Regional);
     form.append('seleccion', this.formData.seleccion);
 
@@ -336,68 +336,68 @@ export class FormPageComponent implements OnInit {
   }
 
   //Funcion Que convierte los input de tipo file a base 64 para poder enviarlos en formato json
-  onFileChange(event: any) {
-    const file = event.target.files[0];
-    if (!file) {
-      return;
-    }
-    if (event.target.name === 'DocumentoIdentidadFile') {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        if (reader.result) {
-          const base64 = reader.result.toString().split(',')[1];
-          this.formData.DocumentoIdentidadFile = base64;
-        } else {
-          console.error('Error al leer el archivo');
-        }
-      };
-    } else if (event.target.name === 'DocumentoEPSFile') {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        if (reader.result) {
-          const base65 = reader.result.toString().split(',')[1];
-          this.formData.DocumentoEPSFile = base65;
-        } else {
-          console.error('Error De archivo');
-        }
-      };
-    } else if (event.target.name === 'ActaInicioPractica') {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        if (reader.result) {
-          const base66 = reader.result.toString().split(',')[1];
-          this.formData.ActaInicioPractica = base66;
-        } else {
-          console.error('Error De archivo');
-        }
-      };
-    } else if (event.target.name === 'RutFile') {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        if (reader.result) {
-          const base67 = reader.result.toString().split(',')[1];
-          this.formData.RutFile = base67;
-        } else {
-          console.error('Error De archivo');
-        }
-      };
-    } else if (event.target.name === 'CamaraComercioFile') {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        if (reader.result) {
-          const base68 = reader.result.toString().split(',')[1];
-          this.formData.CamaraComercioFile = base68;
-        } else {
-          console.error('Error De archivo');
-        }
-      };
-    }
-  }
+  // onFileChange(event: any) {
+  //   const file = event.target.files[0];
+  //   if (!file) {
+  //     return;
+  //   }
+  //   if (event.target.name === 'DocumentoIdentidadFile') {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       if (reader.result) {
+  //         const base64 = reader.result.toString().split(',')[1];
+  //         this.formData.DocumentoIdentidadFile = base64;
+  //       } else {
+  //         console.error('Error al leer el archivo');
+  //       }
+  //     };
+  //   } else if (event.target.name === 'DocumentoEPSFile') {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       if (reader.result) {
+  //         const base65 = reader.result.toString().split(',')[1];
+  //         this.formData.DocumentoEPSFile = base65;
+  //       } else {
+  //         console.error('Error De archivo');
+  //       }
+  //     };
+  //   } else if (event.target.name === 'ActaInicioPractica') {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       if (reader.result) {
+  //         const base66 = reader.result.toString().split(',')[1];
+  //         this.formData.ActaInicioPractica = base66;
+  //       } else {
+  //         console.error('Error De archivo');
+  //       }
+  //     };
+  //   } else if (event.target.name === 'RutFile') {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       if (reader.result) {
+  //         const base67 = reader.result.toString().split(',')[1];
+  //         this.formData.RutFile = base67;
+  //       } else {
+  //         console.error('Error De archivo');
+  //       }
+  //     };
+  //   } else if (event.target.name === 'CamaraComercioFile') {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       if (reader.result) {
+  //         const base68 = reader.result.toString().split(',')[1];
+  //         this.formData.CamaraComercioFile = base68;
+  //       } else {
+  //         console.error('Error De archivo');
+  //       }
+  //     };
+  //   }
+  // }
 
   ngOnInit(): void {
     // Ocultar el div de loading después de que el DOM haya cargado

@@ -28,19 +28,15 @@ export class FormPageComponent implements OnInit {
     EmailEstudiante: '',
     ModalidadPractica: '',
     PeriodoAcademico: '',
-    // DocumentoIdentidadFile: '',
     TipoIdentificacion: '',
     NumeroIdentifiacion: '',
     NombreEstudiante: '',
     ProgramaAcademico: '',
     TipoPractica: '',
-    // RutFile: '',
     NombreEmprendimiento: '',
     NitEmprendimiento: '',
-    // CamaraComercioFile: '',
     FechaNacimiento: '',
     EpsEstudiante: '',
-    // DocumentoEPSFile: '',
     NumeroTelEstudiante: '',
     CorreoInstitucional: '',
     NombreEmpresaPracticas: '',
@@ -51,7 +47,6 @@ export class FormPageComponent implements OnInit {
     EmailPersonaAcargoPractica: '',
     FechaInicioPractica: '',
     FechaTerminacionPractica: '',
-    // ActaInicioPractica: '',
     Regional: '',
     seleccion: '',
   };
@@ -215,7 +210,7 @@ export class FormPageComponent implements OnInit {
           //Asignacion de no Aplica para los input que desaparecen
           const Vacio = 'NA';
           // this.formData.CamaraComercioFile = null;
-          this.formData.NitEmprendimiento = '';
+          this.formData.NitEmprendimiento = Vacio;
           this.formData.NombreEmprendimiento = Vacio;
           // this.formData.RutFile = '';
           return this.Enviar();
@@ -223,11 +218,11 @@ export class FormPageComponent implements OnInit {
       }
     }
     
-    form.resetForm();
   }
   
   Recarga(){
-    window.location.reload();
+    // window.location.reload();
+    window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSedsWFD1UYukoorpWAefymH-v6oKeHcGQYMDfKi8ZzBKyb2GQ/viewform";
   }
   //Funcion enviar que añade los input al JSON y hace post a la api
   Enviar() {
@@ -294,7 +289,7 @@ export class FormPageComponent implements OnInit {
             this.isLoading = false;
             Swal.fire({
               title: '¡Éxito!',
-              text: responseObject.message,
+              text: "Estimado(a) estudiante, por favor, ten en cuenta que es obligatorio diligenciar el formulario: Cargue de documentos de solicitudes de Afiliación a ARL 2023 - Estudiantes en Práctica, para solicitar el seguro de riesgos laborales (ARL). Sin el diligenciamiento de este formulario, tu solicitud de ARL será RECHAZADA. Asegúrate de proporcionar toda la información requerida y adjuntar los documentos necesarios para evitar retrasos o inconvenientes en el proceso de afiliación. Si tienes alguna pregunta o requieres asistencia adicional, no dudes en contactarnos por Cami Ticket o con tu docente de prácticas.",
               icon: 'success',
             }).then((result)=>{
               if(result.isConfirmed){

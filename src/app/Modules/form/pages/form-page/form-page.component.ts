@@ -49,7 +49,12 @@ export class FormPageComponent implements OnInit {
     FechaTerminacionPractica: '',
     Regional: '',
     seleccion: '',
+    CapaOcho: '' 
   };
+
+
+
+  //Varibles Creadas para el Buscador de municipios
   coincidencias: string[] = [];
   busqueda: string = '';
   public dataa: any[] = [];
@@ -77,14 +82,13 @@ export class FormPageComponent implements OnInit {
         this.dataa = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
       });
   }
-  //eee
+
   //Campo Limite Fechas
   constructor(private http: HttpClient) {
     const today = new Date();
     const dosDias = new Date(today.setDate(today.getDate() + 3));
     this.minDate = dosDias.toISOString().slice(0, 16);
 
-    // const todayy = new Date();
     const TreintaDias = new Date(dosDias.setDate(dosDias.getDate() + 32));
     this.maxDate = TreintaDias.toISOString().slice(0, 16);
   }
@@ -113,7 +117,8 @@ export class FormPageComponent implements OnInit {
         // this.formData.DocumentoEPSFile == '' ||
         this.formData.CorreoInstitucional == '' ||
         this.formData.seleccion == '' ||
-        this.formData.Regional == ''
+        this.formData.Regional == '' ||
+        this.formData.CapaOcho == ''
       ) {
         Swal.fire({
           title: '¡Error!',
@@ -150,7 +155,8 @@ export class FormPageComponent implements OnInit {
           // this.formData.DocumentoEPSFile == '' ||
           this.formData.CorreoInstitucional == '' ||
           this.formData.seleccion == '' ||
-          this.formData.Regional == ''
+          this.formData.Regional == '' ||
+          this.formData.CapaOcho == "NO"
         ) {
           Swal.fire({
             title: '¡Error!',
@@ -170,6 +176,7 @@ export class FormPageComponent implements OnInit {
           this.formData.NitEmpresaPracticas = '';
           this.formData.NumeroTelEstudiante = '';
           this.formData.NombreEmpresaPracticas = Vacio;
+          
           // this.formData.ActaInicioPractica = '';
           return this.Enviar();
         }
@@ -199,7 +206,8 @@ export class FormPageComponent implements OnInit {
           this.formData.FechaTerminacionPractica == '' ||
           // this.formData.ActaInicioPractica == '' ||
           this.formData.seleccion == '' ||
-          this.formData.Regional == ''
+          this.formData.Regional == '' ||
+          this.formData.CapaOcho == ''
         ) {
           Swal.fire({
             title: '¡Error!',
@@ -226,6 +234,9 @@ export class FormPageComponent implements OnInit {
   }
   //Funcion enviar que añade los input al JSON y hace post a la api
   Enviar() {
+    const str = this.formData.CapaOcho ? "SI" : "NO"
+    this.formData.CapaOcho = str
+
     this.isLoading = true;
     const form = new FormData();
     form.append('EmailEstudiante', this.formData.EmailEstudiante);
@@ -249,10 +260,7 @@ export class FormPageComponent implements OnInit {
     form.append('NombreEmpresaPracticas', this.formData.NombreEmpresaPracticas);
     form.append('NitEmpresaPracticas', this.formData.NitEmpresaPracticas);
     form.append('RiesgoEstudiante', this.formData.RiesgoEstudiante);
-    form.append(
-      'NombrePersonaAcargoPractica',
-      this.formData.NombrePersonaAcargoPractica
-    );
+    form.append('NombrePersonaAcargoPractica',this.formData.NombrePersonaAcargoPractica);
     form.append('TelefonoPersonasAcargo', this.formData.TelefonoPersonasAcargo);
     form.append(
       'EmailPersonaAcargoPractica',
@@ -266,7 +274,7 @@ export class FormPageComponent implements OnInit {
     // form.append('ActaInicioPractica', this.formData.ActaInicioPractica);
     form.append('Regional', this.formData.Regional);
     form.append('seleccion', this.formData.seleccion);
-
+    form.append('str', this.formData.CapaOcho);
     const formDataJson = JSON.stringify(this.formData);
     //console.log(formDataJson);
     const httpOptions = {

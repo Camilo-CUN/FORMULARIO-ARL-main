@@ -9,6 +9,20 @@
                 <div class="card-body">
                     <form class="form-control" #ArlForm="ngForm" (ngSubmit)="submitForm(ArlForm)" enctype="multipart/form-data">
                         <div class="mb-3">
+                            <p>Estimado(a) estudiante, por favor, ten en cuenta que es obligatorio diligenciar el formulario: <strong>Cargue de documentos de solicitudes de Afiliación
+                                a ARL 2023 - Estudiantes en Práctica,</strong> para solicitar el seguro de riesgos laborales (ARL). Sin el diligenciamiento de este formulario, tu solicitud
+                                de ARL será RECHAZADA. Asegúrate de proporcionar toda la información requerida y adjuntar los documentos necesarios para evitar retrasos o 
+                                inconvenientes en el proceso de afiliación. Si tienes alguna pregunta o requieres asistencia adicional, no dudes en contactarnos por Cami Ticket 
+                                o con tu docente de prácticas. </p>
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSedsWFD1UYukoorpWAefymH-v6oKeHcGQYMDfKi8ZzBKyb2GQ/viewform">Carga tus documentos aquí.</a>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="CapaOcho" id="CapaOcho" [(ngModel)]="formData.CapaOcho" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    He leído y acepto los términos y condiciones de uso
+                                </label>
+                            </div> <br>
+                        <div class="mb-3">
                             <label for="emailEstudiante" class="form-label">Correo personal</label>
                             <input type="email" name="EmailEstudiante" class="form-control" id="emailEstudiante"
                                 required [(ngModel)]="formData.EmailEstudiante">

@@ -28,15 +28,15 @@
                                 <option value="Cunbre emprendimiento naciente">CUNbre emprendimiento naciente</option>
                                 <option value="Cunbre emprendimiento consolidado">CUNbre emprendimiento consolidado
                                 </option>
-                            </select><br>
+                            </select>
 
                             <div *ngIf="formData.ModalidadPractica === 'Cunbre emprendimiento naciente'">
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="rutFile" class="form-label">Soporte de RUT de su empresa o
                                         emprendimiento</label>
                                     <input accept=".pdf" class="form-control" name="RutFile" type="file" id="rutFile"
                                         (change)="onFileChange($event)">
-                                </div>
+                                </div> -->
                                 <div class="mb-3">
                                     <label for="nombreEmprendimiento" class="form-label">Nombre de su
                                         Emprendimiento</label>
@@ -50,18 +50,18 @@
                                 </div>
                             </div>
                             <div *ngIf="formData.ModalidadPractica === 'Cunbre emprendimiento consolidado'">
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="rutFile" class="form-label">Soporte de RUT de su empresa o
                                         emprendimiento</label>
                                     <input accept=".pdf" class="form-control" name="RutFile" type="file" id="rutFile"
                                         (change)="onFileChange($event)">
-                                </div>
-                                <div class="mb-3">
+                                </div> -->
+                                <!-- <div class="mb-3">
                                     <label for="camaraComercioFile" class="form-label">Soporte cámara de comercio
                                         (Vigente-Emprendimiento consolidado)</label>
                                     <input accept=".pdf" class="form-control" name="CamaraComercioFile" type="file"
                                         id="CamaraComercioFile" (change)="onFileChange($event)">
-                                </div>
+                                </div> -->
                                 <div class="mb-3">
                                     <label for="nombreEmprendimiento" class="form-label">Nombre de su
                                         Emprendimiento</label>
@@ -78,12 +78,12 @@
 
                         </div>
 
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="documentoIdentidadFile" #documentoFile class="form-label">Fotocopia legible por los dos lados
                                 del documento de identidad</label>
                             <input accept=".pdf" class="form-control" name="DocumentoIdentidadFile" type="file"
                                 id="documentoIdentidadFile" (change)="onFileChange($event)">
-                        </div>
+                        </div> -->
 
                         <div class="mb-3">
                             <label for="tipoidentificacion" class="form-label">Tipo De Documento</label>
@@ -284,12 +284,12 @@
                                 <option>253-UT SERVISALUD SAN JOSE</option>
                             </select>
                         </div>
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="documentoEPSFile" class="form-label">Cargar certificado de afiliación a EPS (Con
                                 fecha de expedición no mayor a 30 días, no se acepta carnet de EPS)</label>
                             <input class="form-control" name="DocumentoEPSFile" type="file" id="documentoEPSFile"
                                 accept=".pdf" (change)="onFileChange($event)">
-                        </div>
+                        </div> -->
 
                         <div class="mb-3">
                             <label for="municipio">Municipio, busque y seleccione la opción que mas coincida</label>
@@ -374,13 +374,13 @@
                             <input type="datetime-local" [min]="maxDate" name="FechaTerminacionPractica" class="form-control"
                                 id="fechaTerminacionPractica" [(ngModel)]="formData.FechaTerminacionPractica">
                         </div>
-                        <div *ngIf="formData.ModalidadPractica !== 'Cunbre emprendimiento consolidado' && formData.ModalidadPractica !== 'Cunbre emprendimiento naciente'"
+                        <!-- <div *ngIf="formData.ModalidadPractica !== 'Cunbre emprendimiento consolidado' && formData.ModalidadPractica !== 'Cunbre emprendimiento naciente'"
                             class="mb-3">
                             <label for="actaInicioPractica">En este espacio podrá subir el Acta de Inicio (Solamente en
                                 formato PDF, el documento debe tener la firma de la empresa y del estudiante)</label>
                             <input type="file" class="form-control" id="actaInicioPractica" name="ActaInicioPractica"
                                 accept=".pdf" (change)="onFileChange($event)">
-                        </div>
+                        </div> -->
                         <div class="mb-3">
                             <label for="regional">Regional a la que pertenece el estudiante</label>
                             <select id="regional" name="Regional" class="form-control" [(ngModel)]="formData.Regional">

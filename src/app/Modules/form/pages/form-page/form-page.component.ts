@@ -86,7 +86,7 @@ export class FormPageComponent implements OnInit {
   //Campo Limite Fechas
   constructor(private http: HttpClient) {
     const today = new Date();
-    const dosDias = new Date(today.setDate(today.getDate() + 3));
+    const dosDias = new Date(today.setDate(today.getDate() + 4));
     this.minDate = dosDias.toISOString().slice(0, 16);
 
     const TreintaDias = new Date(dosDias.setDate(dosDias.getDate() + 32));
